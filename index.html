@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#111417">
+  <title>GRID//SHOT 本地瞄准训练</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span>GRID</span><b>//</b>SHOT</div>
+      <div class="session-label">PRECISION TRAINING</div>
+      <button class="icon-button" id="sound-toggle" type="button" aria-label="关闭音效" title="音效">
+        <span class="sound-on" aria-hidden="true">♪</span>
+      </button>
+    </header>
+
+    <section class="arena-shell" aria-label="网格射击训练场">
+      <div class="hud" aria-live="polite">
+        <div class="metric"><span>得分</span><strong id="score">0</strong></div>
+        <div class="metric"><span>准确率</span><strong id="accuracy">100%</strong></div>
+        <div class="metric metric-combo"><span>连击</span><strong id="combo">0</strong></div>
+        <div class="timer" id="timer">60.0</div>
+      </div>
+
+      <canvas id="arena" aria-label="点击圆形目标进行射击"></canvas>
+
+      <section class="overlay" id="overlay">
+        <div class="start-panel" id="start-panel">
+          <p class="eyebrow">LOCAL TRAINING</p>
+          <h1>GRID//SHOT</h1>
+          <div class="best-line"><span>本地最高分</span><strong id="best-score">0</strong></div>
+          <button class="primary-button" id="start-button" type="button">开始训练</button>
+        </div>
+
+        <div class="result-panel hidden" id="result-panel">
+          <p class="eyebrow">SESSION COMPLETE</p>
+          <h2 id="result-score">0</h2>
+          <p class="result-label">最终得分</p>
+          <div class="result-grid">
+            <div><span>准确率</span><strong id="result-accuracy">0%</strong></div>
+            <div><span>平均反应</span><strong id="result-reaction">0 ms</strong></div>
+            <div><span>命中</span><strong id="result-hits">0</strong></div>
+            <div><span>最高连击</span><strong id="result-combo">0</strong></div>
+          </div>
+          <button class="primary-button" id="restart-button" type="button">再来一局</button>
+        </div>
+      </section>
+    </section>
+
+    <footer class="controls">
+      <div class="control-group">
+        <span>时长</span>
+        <div class="segmented" id="duration-options">
+          <button type="button" data-value="15">15s</button>
+          <button type="button" data-value="30">30s</button>
+          <button class="active" type="button" data-value="60">60s</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <span>目标</span>
+        <div class="segmented" id="size-options">
+          <button type="button" data-value="large">大</button>
+          <button class="active" type="button" data-value="standard">标准</button>
+          <button type="button" data-value="small">小</button>
+        </div>
+      </div>
+      <div class="session-stat"><span>平均反应</span><strong id="live-reaction">-- ms</strong></div>
+      <div class="session-stat"><span>命中 / 失误</span><strong><i id="hits">0</i> / <i id="misses">0</i></strong></div>
+    </footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
